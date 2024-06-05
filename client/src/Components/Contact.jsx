@@ -1,8 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import image from '../assets/Library.jpg';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [id]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('https://bookstore1-5p5m.vercel.app//contact', formData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.data.success) {
+        alert('Message sent successfully');
+        setFormData({
+          name: '',
+          email: '',
+          message: '',
+        });
+      } else {
+        alert('Error sending message');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Error submitting form');
+    }
+  };
+
   return (
     <div className="relative bg-cover bg-center min-h-screen" style={{ backgroundImage: `url(${image})` }}>
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
@@ -12,7 +52,7 @@ const Contact = () => {
           <p className="text-lg text-white mb-4">
             Have questions or feedback? Contact us using the form below or visit us at our store.
           </p>
-          <form className="mb-6">
+          <form className="mb-6" onSubmit={handleSubmit}>
             <label className="block text-white text-sm font-bold mb-2" htmlFor="name">
               Name
             </label>
@@ -20,6 +60,8 @@ const Contact = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="name"
               type="text"
+              value={formData.name}
+              onChange={handleChange}
               placeholder="Your Name"
             />
             <label className="block text-white text-sm font-bold mt-4 mb-2" htmlFor="email">
@@ -29,6 +71,8 @@ const Contact = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="email"
               type="email"
+              value={formData.email}
+              onChange={handleChange}
               placeholder="Your Email"
             />
             <label className="block text-white text-sm font-bold mt-4 mb-2" htmlFor="message">
@@ -37,6 +81,8 @@ const Contact = () => {
             <textarea
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="message"
+              value={formData.message}
+              onChange={handleChange}
               placeholder="Your Message"
               rows="4"
             ></textarea>
