@@ -21,7 +21,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://bookstore1-5p5m.vercel.app//contact', formData, {
+      const response = await axios.post('https://bookstore1-5p5m.vercel.app/contact', formData, {
         headers: {
           'Content-Type': 'application/json',
         },

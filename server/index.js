@@ -6,6 +6,8 @@ import cors from 'cors';
 import bookRoute from "./route/book.route.js";
 import User from './route/user.route.js'; // Make sure this path is correct
 import contactRoute from './route/contact.route.js';
+import eventRoute from './route/event.route.js';
+import specialRoute from './route/special.route.js';
 
 dotenv.config();
 
@@ -17,7 +19,7 @@ const URI = "mongodb+srv://dhurir163:Rohit%401223@cluster0.ggspzxv.mongodb.net/m
 console.log('MongoDB URI:', URI);
 
 app.use(cors({
-    origin: ["https://bookstore1-ten.vercel.app"], // frontend link
+    origin: ["https://bookstore1-ten.vercel.app","http://localhost:4200"], // frontend link
     methods: ["POST", "GET"],
     credentials: true
 }));
@@ -43,6 +45,10 @@ app.get("/", (req, res) => {
 app.use("/book", bookRoute);
 app.use("/user", User);
 app.use("/contact", contactRoute);
+//Events Route
+app.use("/event", eventRoute);
+app.use("/special", specialRoute);
+
 
 app.listen(port, () => {
     console.log(`Server running on localhost:${port}`);
