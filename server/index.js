@@ -8,6 +8,8 @@ import User from './route/user.route.js'; // Make sure this path is correct
 import contactRoute from './route/contact.route.js';
 import eventRoute from './route/event.route.js';
 import specialRoute from './route/special.route.js';
+import eventuser from './route/eventuser.route.js';
+import specialuser from './route/specialuser.route.js'
 
 dotenv.config();
 
@@ -48,6 +50,9 @@ app.use("/contact", contactRoute);
 //Events Route
 app.use("/event", eventRoute);
 app.use("/special", specialRoute);
+//Events User
+app.use("/eventuser", eventuser);
+app.use("/specialuser", specialuser);
 
 
 app.listen(port, () => {
