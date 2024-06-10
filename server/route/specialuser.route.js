@@ -3,6 +3,6 @@ import { special } from "../controller/specialuser.controller.js";
 
 const router = express.Router();
 
-router.post("/specialuser", special);
+router.post("/", special);
 
 export default router;
