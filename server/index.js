@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 
 import bookRoute from "./route/book.route.js";
-import User from './route/user.route.js'; // Make sure this path is correct
+import User from './route/user.route.js'; 
 import contactRoute from './route/contact.route.js';
 import eventRoute from './route/event.route.js';
 import specialRoute from './route/special.route.js';
