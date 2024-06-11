@@ -31,7 +31,7 @@ export const special = async (req, res) => {
             to: email,
             cc: "dhurir163@gmail.com",
             subject: `Registration Confirmation for ${batch}`,
-            text: `Dear ${firstname} ${lastname},\n\nThank you for registering for the special event.\n\nDetails:\nName: ${firstname} ${lastname}\nEmail: ${email}\nPhone: ${phone}\nEducation: ${education}\nAddress: ${address}\nBatch: ${batch}\n\nRegards,\nYour Name`
+            text: `Dear ${firstname} ${lastname},\n\nThank you for registering for the event.\n\nDetails:\nName: ${firstname} ${lastname}\nEmail: ${email}\nPhone: ${phone}\nEducation: ${education}\nAddress: ${address}\nBatch: ${batch}\n\nWe will send you an email if the batch starts.\n\nRegards,\nRohit Dhuri`
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
