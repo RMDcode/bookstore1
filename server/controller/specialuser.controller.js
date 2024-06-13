@@ -15,6 +15,12 @@ export const special = async (req, res) => {
     });
 
     try {
+        // Check if the email already exists in the collection
+        const existingStudent = await se_students.findOne({ email });
+        if (existingStudent) {
+            return res.status(400).json({ success: false, message: 'Email already exists. Please use a different email address.' });
+        }
+
         await se_students.save();
 
         // Set up Nodemailer transporter
