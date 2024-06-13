@@ -11,6 +11,7 @@ import specialRoute from './route/special.route.js';
 import eventuser from './route/eventuser.route.js';
 import specialuser from './route/specialuser.route.js';
 import login from './route/login.route.js';
+import contactUser from './route/contactuser.route.js';
 
 dotenv.config();
 
@@ -54,8 +55,7 @@ app.use("/special", specialRoute);
 //Events User
 app.use("/eventuser", eventuser);
 app.use("/specialuser", specialuser);
-app.use("/specialuser", specialuser);
-
+app.use("/contactuser", contactUser);
 app.use("/login",login);
 
 
